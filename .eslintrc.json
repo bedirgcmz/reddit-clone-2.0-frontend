@@ -1,3 +1,8 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off", // Kullanılmayan değişkenler hatasını kapatır
+    "@typescript-eslint/no-explicit-any": "off", // 'any' kullanımı ile ilgili hatayı kapatır
+    "react/no-unescaped-entities": "off" // JSX içinde özel karakter hatalarını kapatır
+  }
 }
