@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .main {
+    @apply my-6 w-full max-w-3xl px-6;
+  }
+
+  .header {
+    @apply flex h-16 w-full items-center justify-between gap-4 px-4 py-2 md:px-20;
+  }
+}
+
+@layer components {
+  .button-primary {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-full bg-primary px-4 py-2 text-white outline-none transition hover:bg-primary-600;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-full border px-4 py-2 transition hover:bg-slate-700 hover:text-white;
+  }
+
+  .button-tertiary {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-full px-2 py-2 text-zinc-800 outline-none transition hover:bg-zinc-200;
+  }
+
+  .input {
+    @apply w-full rounded-full border border-zinc-200 bg-white px-4 py-2 text-base text-zinc-800 outline-none placeholder:text-zinc-500;
+  }
+}
