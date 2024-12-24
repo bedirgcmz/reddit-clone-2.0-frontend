@@ -6,20 +6,54 @@ import {
   postPageSchema,
 } from './schemas'
 
+// export const getPost = async (id: string) => {
+//   try {
+//     const response = await client.get(`/posts/${id}`)
+
+//     const { data, error } = postPageSchema.safeParse(response.data)
+//     if (error) {
+//       return null
+//     }
+
+//     return data
+//   } catch {
+//     return null
+//   }
+// }
+
 export const getPost = async (id: string) => {
   try {
     const response = await client.get(`/posts/${id}`)
 
-    const { data, error } = postPageSchema.safeParse(response.data)
-    if (error) {
+    const parsed = postPageSchema.safeParse(response.data)
+    if (!parsed.success) {
+      console.error('Validation error:', parsed.error)
       return null
     }
 
-    return data
-  } catch {
+    return parsed.data
+  } catch (err) {
+    console.error('Error fetching post:', err)
     return null
   }
 }
+
+// export const getPosts = async (limit: number, page: number) => {
+//   try {
+//     const response = await client.get('/posts', {
+//       params: { limit, page },
+//     })
+
+//     const { data, error } = homepagePostsSchema.safeParse(response.data)
+//     if (error) {
+//       return null
+//     }
+
+//     return data
+//   } catch {
+//     return null
+//   }
+// }
 
 export const getPosts = async (limit: number, page: number) => {
   try {
@@ -27,13 +61,15 @@ export const getPosts = async (limit: number, page: number) => {
       params: { limit, page },
     })
 
-    const { data, error } = homepagePostsSchema.safeParse(response.data)
-    if (error) {
+    const parsed = homepagePostsSchema.safeParse(response.data)
+    if (!parsed.success) {
+      console.error('Validation error:', parsed.error)
       return null
     }
 
-    return data
-  } catch {
+    return parsed.data
+  } catch (err) {
+    console.error('Error fetching posts:', err)
     return null
   }
 }
