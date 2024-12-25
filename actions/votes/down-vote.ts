@@ -12,15 +12,12 @@ export const downVote = async (
   }
 
   try {
-    const response = await fetch(
-      `http://localhost:8080/votes/${postId}/downvote`,
-      {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${accessToken.value}`,
-        },
+    const response = await fetch(`/votes/${postId}/downvote`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${accessToken.value}`,
       },
-    )
+    })
 
     if (!response.ok) {
       throw new Error('Failed to downvote the post.')
