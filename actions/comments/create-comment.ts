@@ -41,6 +41,6 @@ export const createComment = async (
     return { error: 'Could not redirect to new comment' }
   }
 
-  revalidatePath(`/post/${postId}`) // Revalidate post path to show new comment
-  redirect(`/post/${postId}#comment-${id}`) // Redirect to the post page, scrolled to the new comment
+  revalidatePath(`/post/${postId}`)
+  redirect(`/post/${postId}#comment-${id}`)
 }
